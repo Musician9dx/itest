@@ -335,14 +335,6 @@ def create_app(url, requirements, project_name, conda, author_name, email_id):  
     obj.write_files()
 
 
-create_app(
-    "https://github.com/Musician9dx/musician",
-    "scikit-learn tensorflow",
-    "musician",
-    True,
-    "musician",
-    "ragha@gmail.com"
-)
 
 
 

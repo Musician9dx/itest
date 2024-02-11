@@ -1,17 +1,17 @@
-import streamlit as st  # Imorting Requirements
+import streamlit as st
+from streamlit_pandas_profiling import st_profile_report
 import os
-import yaml
-import pandas as pd
-from noops.src.noops.app.app import create_app
-from noops.src.noops.prisma.prisma import read_logs
-from noops.src.noops.utils.yaml import handle_yaml
 
+from itest.create_env import create_app
+from itest.prisma import read_logs
+from itest.handlers import handle_yaml
+from itest.mlflow import Summarize_MLFlow
 import time
 
 yamlhandler = handle_yaml()
 
-st.title("NoOps")
-st.caption("Made In INDIA!!")
+st.title("Retro & Mylo")
+st.caption("Itest")
 # Intro
 
 
@@ -19,7 +19,7 @@ app, logs, git, mllogs, yaml, timc, ret = st.tabs(
     ["Creat App", "Read Logs", "Update Git", "Read ML Logs", "YAML Configuration", "Calculate Time", "Return"])
 
 with app:
-    st.subheader("Create a noapp")
+    st.subheader("Create a Retro")
 
     col1, col2, col3 = st.columns(3)
 
@@ -77,7 +77,7 @@ with mllogs:
 
     if st.button("Read Logs:"):  # Summarize ML Models
 
-        Versions, Parameters, Metrics, Profile = Summarize_MLFlow()
+        Versions, Parameters, Metrics, Profile,DataFrame = Summarize_MLFlow()
 
         Ver, Par, Met, Prof = st.tabs(["Model Versions", "Model Parameters", "Model Metrics", "Profile Report"])
 
@@ -92,10 +92,10 @@ with mllogs:
         with Met:
             st.caption("Model Metrics")
             st.json(Metrics)
-        #
-        # with Prof:
-        #
-        #     st_profile_report(Profile)
+
+        with Prof:
+
+            st_profile_report(Profile)
 
 with yaml:
     dataingestion, datatransformation, modelbuild, modelpredict, modelevaluate, pipleine = st.tabs(

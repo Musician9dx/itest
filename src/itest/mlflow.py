@@ -121,7 +121,7 @@ class __MLFlowSummarizer():
 
         profileReport = ProfileReport(DataFrame)
 
-        return profileReport
+        return (profileReport,DataFrame)
 
 
 def Summarize_MLFlow():
@@ -135,13 +135,14 @@ def Summarize_MLFlow():
 
     metrics = obj.read_metrics()
 
-    profile = obj.create_profile(metrics, params)
+    profile,DataFrame = obj.create_profile(metrics, params)
 
     return (
         versions,
         params,
         metrics,
-        profile
+        profile,
+        DataFrame
     )
 
 
