@@ -1,0 +1,5 @@
+setup.py
+src/itest.egg-info/PKG-INFO
+src/itest.egg-info/SOURCES.txt
+src/itest.egg-info/dependency_links.txt
+src/itest.egg-info/top_level.txt
